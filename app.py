@@ -210,13 +210,14 @@ def add_adopter():
         name = request.form["name"]
         phone = request.form["phone"]
         city = request.form["city"]
+        district = request.form["district"]
 
         con = get_connection()
 
         con.execute("""
-        INSERT INTO Adopters (Adopter_Name, Phone, City)
-        VALUES (?, ?, ?)
-        """, (name, phone, city))
+       INSERT INTO Adopters (Adopter_Name, Phone, City, District)
+       VALUES (?, ?, ?, ?)
+        """, (name, phone, district))
 
         con.commit()
         con.close()
